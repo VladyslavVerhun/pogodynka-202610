@@ -1,0 +1,29 @@
+App\Entity\Location:
+    properties:
+        city:
+            - NotBlank: { groups: [create, edit] }
+            - Length: { min: 2, groups: [create] }
+            - Length: { max: 100, groups: [edit] }
+
+        country:
+            - NotBlank: { groups: [create, edit] }
+
+        latitude:
+            - NotBlank: { groups: [create, edit] }
+            - Range: { min: -90, max: 90, groups: [create, edit] }
+
+        longitude:
+            - NotBlank: { groups: [create, edit] }
+            - Range: { min: -180, max: 180, groups: [create, edit] }
+
+App\Entity\Measurement:
+    properties:
+        date:
+            - NotNull: { groups: [create, edit] }
+
+        celsius:
+            - NotNull: { groups: [create, edit] }
+            - Range: { min: -40, max: 40, groups: [create, edit] }
+
+        location:
+            - NotNull: { groups: [create, edit] }
